@@ -1,0 +1,71 @@
+{% extends 'accounts/main.html' %}
+
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Transactions</title>
+	<meta name="viewport" content="width=device-width, intial-scale=1.0">
+	<link rel="stylesheet" href="{% static 'CSS/style.css' %}">
+  <link rel="stylesheet" type='text/css' href="{% static '/css/main.css' %}">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+	<section>
+
+		<h2>Transactions Details</h2>
+		<table class="table1">
+			<thead>
+				<tr>
+					<th>No.</th>
+					<th>Name</th>
+					<th>Email</th>
+					<th>Amt Debited</th>
+					<th>Amt Credited</th>
+					<th>Acc. Bal</th>
+				</tr>
+			</thead>
+			<body>
+				{% for i in trans %}
+				<tr>
+					<td>{{i.id}}</td>
+					<td>{{i.name}}</td>
+					<td>{{i.email}}</td>
+					<td>{{i.debit}}</td>
+					<td>{{i.credit}}</td>
+					<td>{{i.acbal}}₹</td>
+				</tr>
+				{% endfor %}
+			</body>
+
+		</table>
+	</section>
+<style media="screen">
+
+	.table1 {
+		padding: 20px;
+	}
+
+	th {
+		text-align: left;
+		padding-left: 45px;
+	}
+
+	tr:nth-child(4n + 1) td,
+	tr:nth-child(4n + 2) td {
+    background-color: lightblue;
+	}
+
+	tr:nth-child(4n + 3) td,
+	tr:nth-child(4n + 4) td {
+	    background-color: lightgreen;
+	}
+</style>
+
+</body>
+</html>
+
+{% endblock %}
